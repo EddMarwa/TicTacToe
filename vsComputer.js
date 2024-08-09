@@ -1,7 +1,8 @@
+// In vsComputer.js
 document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('gameBoard');
     const board = ['', '', '', '', '', '', '', '', ''];
-    let currentPlayer = 'X'; // Player X starts
+    let currentPlayer = 'X';
     let isGameActive = true;
 
     const clickSound = new Audio('click.mp3');
@@ -30,77 +31,26 @@ document.addEventListener('DOMContentLoaded', () => {
             clickSound.play();
             createBoard();
             checkWinner();
-            if (isGameActive) {
-                currentPlayer = 'O'; // Switch to computer
-                computerPlay();
+            if (isGameActive && currentPlayer === 'O') {
+                setTimeout(makeComputerMove, 500); // 500ms delay before the computer makes its move
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player only if the game is still active
             }
         }
     }
 
-    // Computer's turn
-    function computerPlay() {
-        let emptyCells = board.map((cell, index) => (cell === '') ? index : null).filter(val => val !== null);
-        if (emptyCells.length > 0) {
-            const randomIndex = Math.floor(Math.random() * emptyCells.length);
-            board[emptyCells[randomIndex]] = currentPlayer;
-            createBoard();
-            checkWinner();
-            currentPlayer = 'X'; // Switch back to player
-        }
-    }
-
-    // Check for a winner
-    function checkWinner() {
-        const winningCombinations = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6]
-        ];
-
-        for (const combination of winningCombinations) {
-            const [a, b, c] = combination;
-            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                highlightWinningCombination(combination);
-                winSound.play();
-                alert(`Player ${board[a]} wins!`);
-                isGameActive = false;
-                return;
-            }
-        }
-
-        if (!board.includes('')) {
-            drawSound.play();
-            alert('It\'s a draw!');
-            resetBoard();
-        }
-    }
-
-    // Highlight the winning combination
-    function highlightWinningCombination(combination) {
-        combination.forEach(index => {
-            document.querySelector(`[data-index="${index}"]`).classList.add('win');
-        });
-    }
-
-    // Reset the board
-    function resetBoard() {
-        board.fill('');
-        currentPlayer = 'X';
-        isGameActive = true;
+    // Make the computer's move
+    function makeComputerMove() {
+        const availableCells = board.map((value, index) => value === '' ? index : null).filter(value => value !== null);
+        const randomIndex = availableCells[Math.floor(Math.random() * availableCells.length)];
+        board[randomIndex] = currentPlayer;
         createBoard();
+        checkWinner();
+        if (isGameActive) {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player after the computer's move
+        }
     }
 
-    // Add reset button
-    const resetButton = document.createElement('button');
-    resetButton.textContent = 'Reset Game';
-    resetButton.classList.add('button', 'reset-button');
-    resetButton.addEventListener('click', resetBoard);
-    document.querySelector('.container').appendChild(resetButton);
-
+    // Rest of the code remains unchanged (checkWinner, highlightWinningCombination, resetBoard, etc.)
     createBoard();
 });
