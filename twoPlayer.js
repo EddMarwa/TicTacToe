@@ -114,3 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createBoard();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // Other game logic...
+
+    // Back button functionality
+    const backButton = document.getElementById('backButton');
+    backButton.addEventListener('click', () => {
+        window.history.back(); // This will navigate to the previous page
+    });
+
+    createBoard();
+});

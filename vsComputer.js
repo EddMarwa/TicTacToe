@@ -50,7 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player after the computer's move
         }
     }
+});
+document.addEventListener('DOMContentLoaded', () => {
+    // Other game logic...
 
-    // Rest of the code remains unchanged (checkWinner, highlightWinningCombination, resetBoard, etc.)
+    // Back button functionality
+    const backButton = document.getElementById('backButton');
+    backButton.addEventListener('click', () => {
+        window.history.back(); // This will navigate to the previous page
+    });
+
     createBoard();
 });
