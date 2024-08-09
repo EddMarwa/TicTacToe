@@ -9,6 +9,11 @@ body {
     align-items: center;
     height: 100vh;
 }
+.scoreboard {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #ffffff;
+}
 
 .container {
     background-color: #1e1e1e;
