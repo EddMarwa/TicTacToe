@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let isGameActive = true;
+    let scoreX = 0;
+    let scoreO = 0;
 
     const clickSound = new Audio('click.mp3');
     const winSound = new Audio('win.mp3');
@@ -20,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.addEventListener('click', handleCellClick);
             gameBoard.appendChild(cell);
         }
+        updateScoreboard();
+    }
+
+    // Update scoreboard
+    function updateScoreboard() {
+        document.getElementById('scoreX').textContent = scoreX;
+        document.getElementById('scoreO').textContent = scoreO;
     }
 
     // Handle cell click
@@ -28,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (board[index] === '' && isGameActive) {
             board[index] = currentPlayer;
             clickSound.play();
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             createBoard();
             checkWinner();
         }
@@ -53,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 highlightWinningCombination(combination);
                 winSound.play();
                 alert(`Player ${board[a]} wins!`);
+                if (board[a] === 'X') {
+                    scoreX++;
+                } else {
+                    scoreO++;
+                }
                 isGameActive = false;
                 return;
             }
