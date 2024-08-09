@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let isGameActive = true;
-    let scoreX = 0;
-    let scoreO = 0;
+
+    // Add score variables
+    let playerXScore = 0;
+    let playerOScore = 0;
 
     const clickSound = new Audio('click.mp3');
     const winSound = new Audio('win.mp3');
@@ -22,13 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.addEventListener('click', handleCellClick);
             gameBoard.appendChild(cell);
         }
-        updateScoreboard();
-    }
-
-    // Update scoreboard
-    function updateScoreboard() {
-        document.getElementById('scoreX').textContent = scoreX;
-        document.getElementById('scoreO').textContent = scoreO;
     }
 
     // Handle cell click
@@ -39,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
             clickSound.play();
             createBoard();
             checkWinner();
+            if (isGameActive) {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player after checking for a winner
+            }
         }
     }
 
@@ -61,11 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 highlightWinningCombination(combination);
                 winSound.play();
                 alert(`Player ${board[a]} wins!`);
-                if (board[a] === 'X') {
-                    scoreX++;
-                } else {
-                    scoreO++;
-                }
+                if (board[a] === 'X') playerXScore++;
+                else playerOScore++;
+                updateScoreboard();
                 isGameActive = false;
                 return;
             }
@@ -93,12 +89,28 @@ document.addEventListener('DOMContentLoaded', () => {
         createBoard();
     }
 
+    // Update the scoreboard
+    function updateScoreboard() {
+        document.getElementById('playerXScore').textContent = `Player X: ${playerXScore}`;
+        document.getElementById('playerOScore').textContent = `Player O: ${playerOScore}`;
+    }
+
     // Add reset button
     const resetButton = document.createElement('button');
     resetButton.textContent = 'Reset Game';
     resetButton.classList.add('button', 'reset-button');
     resetButton.addEventListener('click', resetBoard);
     document.querySelector('.container').appendChild(resetButton);
+
+    // Create the scoreboard
+    const scoreboard = document.createElement('div');
+    scoreboard.classList.add('scoreboard');
+    scoreboard.innerHTML = `
+        <h2>Scoreboard</h2>
+        <p id="playerXScore">Player X: ${playerXScore}</p>
+        <p id="playerOScore">Player O: ${playerOScore}</p>
+    `;
+    document.querySelector('.container').appendChild(scoreboard);
 
     createBoard();
 });
