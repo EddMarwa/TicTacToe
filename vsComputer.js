@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Make the computer's move
+  
     function makeComputerMove() {
         const availableCells = board.map((value, index) => value === '' ? index : null).filter(value => value !== null);
         const randomIndex = availableCells[Math.floor(Math.random() * availableCells.length)];
