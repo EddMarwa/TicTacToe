@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
             createBoard();
             checkWinner();
             if (isGameActive && currentPlayer === 'O') {
-                setTimeout(makeComputerMove, 500); // 500ms delay before the computer makes its move
+                setTimeout(makeComputerMove, 500); 
             } else {
-                currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player only if the game is still active
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; 
             }
         }
     }
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         createBoard();
         checkWinner();
         if (isGameActive) {
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player after the computer's move
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; 
         }
     }
 });

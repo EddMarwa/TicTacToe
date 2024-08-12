@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             createBoard();
             checkWinner();
             if (isGameActive) {
-                currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player after checking for a winner
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; 
             }
         }
     }
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resetButton.addEventListener('click', resetBoard);
     document.querySelector('.container').appendChild(resetButton);
 
-    // Create the scoreboard
+    //  scoreboard
     const scoreboard = document.createElement('div');
     scoreboard.classList.add('scoreboard');
     scoreboard.innerHTML = `
@@ -115,12 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
     createBoard();
 });
 document.addEventListener('DOMContentLoaded', () => {
-    // Other game logic...
+   
 
     // Back button functionality
     const backButton = document.getElementById('backButton');
     backButton.addEventListener('click', () => {
-        window.history.back(); // This will navigate to the previous page
+        window.history.back(); 
     });
 
     createBoard();
