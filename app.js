@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const greetingDiv = document.getElementById('greeting');
     const displayNameSpan = document.getElementById('displayName');
 
+    
     nameForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = usernameInput.value.trim();
@@ -22,3 +23,4 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'vsComputer.html';
     });
 });
+
