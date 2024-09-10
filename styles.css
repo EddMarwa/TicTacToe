@@ -98,10 +98,7 @@ h1 {
 #backButton:hover {
     background-color: #555;
 }
-
-
-
-/* Game board styles */
+/* Game board  */
 #gameBoard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
