@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Handle cell click
+    // Handles cell click
     function handleCellClick(event) {
         const index = event.target.getAttribute('data-index');
         if (board[index] === '' && isGameActive) {
