@@ -38,8 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-
-  
     function makeComputerMove() {
         const availableCells = board.map((value, index) => value === '' ? index : null).filter(value => value !== null);
         const randomIndex = availableCells[Math.floor(Math.random() * availableCells.length)];
