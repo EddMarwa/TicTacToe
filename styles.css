@@ -127,6 +127,7 @@ h1 {
     background-color: #21a1f1;
     transform: scale(1.1);
 }
+
 .cell[data-value="X"],
 .cell[data-value="O"] {
     animation: pop 0.3s ease forwards;
