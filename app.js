@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             greetingDiv.classList.remove('hidden');
         }
     });
-///two player mode
+///two player modes
     document.getElementById('playTwoPlayer').addEventListener('click', () => {
         window.location.href = 'twoPlayer.html';
     });
