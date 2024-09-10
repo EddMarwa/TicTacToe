@@ -1,4 +1,4 @@
-// In vsComputer.js
+// Player vsComputer.js
 document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('gameBoard');
     const board = ['', '', '', '', '', '', '', '', ''];
