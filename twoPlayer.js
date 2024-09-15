@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPlayer = 'X';
     let isGameActive = true;
 
-    // Add score variables
+    // Adds score variables
     let playerXScore = 0;
     let playerOScore = 0;
 
