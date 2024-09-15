@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const winSound = new Audio('win.mp3');
     const drawSound = new Audio('draw.mp3');
 
-    // Create the game board
+    // Creates the game board
     function createBoard() {
         gameBoard.innerHTML = '';
         for (let i = 0; i < board.length; i++) {
